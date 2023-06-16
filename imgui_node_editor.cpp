@@ -1250,6 +1250,11 @@ void ed::EditorContext::Begin(const char* id, const ImVec2& size)
     m_LastSelectedObjects = m_SelectedObjects;
 }
 
+void ed::EditorContext::SetInvisible(NodeId id) {
+    Node * node = this->GetNode(id);
+    node->setVisibility(false);
+}
+
 void ed::EditorContext::End()
 {
     //auto& io          = ImGui::GetIO();

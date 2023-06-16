@@ -427,6 +427,7 @@ struct Node final: Object
 
     virtual ObjectId ID() override { return m_ID; }
 
+    void setVisibility(bool visibility) {m_IsLive = visibility;}
     bool AcceptDrag() override;
     void UpdateDrag(const ImVec2& offset) override;
     bool EndDrag() override; // return true, when changed
@@ -1316,6 +1317,7 @@ struct EditorContext
     const ImRect& GetViewRect() const { return m_Canvas.ViewRect(); }
     const ImRect& GetRect() const { return m_Canvas.Rect(); }
 
+
     void SetNodePosition(NodeId nodeId, const ImVec2& screenPosition);
     void SetGroupSize(NodeId nodeId, const ImVec2& size);
     ImVec2 GetNodePosition(NodeId nodeId);
@@ -1470,6 +1472,11 @@ struct EditorContext
     }
 
     ImDrawList* GetDrawList() { return m_DrawList; }
+    // my methods
+
+    void SetView(const ImGuiEx::CanvasView& view) { m_Canvas.SetView(view);};
+    void SetInvisible(NodeId id);
+
 
 private:
     void LoadSettings();

@@ -9,6 +9,7 @@
 // CREDITS
 //   Written by Michal Cichon
 //------------------------------------------------------------------------------
+// #include "imgui_node_editor.h"
 # include "imgui_node_editor_internal.h"
 # include <algorithm>
 
@@ -745,6 +746,9 @@ ImVec2 ax::NodeEditor::ScreenToCanvas(const ImVec2& pos)
 {
     return s_Editor->ToCanvas(pos);
 }
+// void ax::NodeEditor::SetViewRect(const ImRect& rect) {
+//     return s_Editor->SetViewRect(rect);
+// }
 
 ImVec2 ax::NodeEditor::CanvasToScreen(const ImVec2& pos)
 {
@@ -759,4 +763,26 @@ int ax::NodeEditor::GetNodeCount()
 int ax::NodeEditor::GetOrderedNodeIds(NodeId* nodes, int size)
 {
     return s_Editor->GetNodeIds(nodes, size);
+}
+
+ImRect ax::NodeEditor::GetViewRect() {
+    return s_Editor->GetViewRect();
+}
+
+const ImGuiEx::CanvasView& ax::NodeEditor::GetView() {
+    return s_Editor->GetView();
+}
+
+void ax::NodeEditor::SetCanvasView(const ImGuiEx::CanvasView& view) {
+    return s_Editor->SetView(view);
+}
+
+void ax::NodeEditor::SetViewPort(const ImRect& rect) {
+    return s_Editor->NavigateTo(rect);
+}
+
+
+void ax::NodeEditor::SetInvisible(NodeId id)
+{
+    return s_Editor->SetInvisible(id);
 }

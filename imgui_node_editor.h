@@ -18,6 +18,8 @@
 # include <imgui.h>
 # include <cstdint> // std::uintXX_t
 # include <utility> // std::move
+# include <imgui_internal.h>
+# include <imgui_canvas.h>
 
 
 //------------------------------------------------------------------------------
@@ -423,10 +425,13 @@ IMGUI_NODE_EDITOR_API ImVec2 CanvasToScreen(const ImVec2& pos);
 IMGUI_NODE_EDITOR_API int GetNodeCount();                                // Returns number of submitted nodes since Begin() call
 IMGUI_NODE_EDITOR_API int GetOrderedNodeIds(NodeId* nodes, int size);    // Fills an array with node id's in order they're drawn; up to 'size` elements are set. Returns actual size of filled id's.
 
+// MY METHODS
 
-
-
-
+IMGUI_NODE_EDITOR_API const ImGuiEx::CanvasView& GetView();
+IMGUI_NODE_EDITOR_API ImRect GetViewRect();
+IMGUI_NODE_EDITOR_API void SetCanvasView(const ImGuiEx::CanvasView& view);
+IMGUI_NODE_EDITOR_API void SetViewPort(const ImRect& rect);
+IMGUI_NODE_EDITOR_API void SetInvisible(NodeId id);
 
 
 //------------------------------------------------------------------------------
